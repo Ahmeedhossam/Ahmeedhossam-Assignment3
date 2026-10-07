@@ -179,10 +179,14 @@ This is the folder that we take and upload to the **server**: the `bin` folder.
 
 */
 
+using CSharpBasicsAssignment;
+
 Console.WriteLine("Project & Structure in comments uppper");
 Console.WriteLine("===============");
 Console.WriteLine("Part B — Variables, Types & Casting  ");
 RunTypesDemo();
+RunValueVsReferenceDemo();
+
 void RunTypesDemo()
 {
     int x = 10;
@@ -234,4 +238,43 @@ void RunTypesDemo()
     float A = (float)B;
 
     Console.ReadLine();
+}
+void RunValueVsReferenceDemo()
+{
+    point p1 = new point() { X = 1, Y = 2 };
+    point p2 = p1;
+    p2.X = 99;
+    Console.WriteLine($"p1.x {p1.X}   p2.x {p2.X}");
+    // p1.x does not change to 99 cuz X is Value type so p2.X is just a copy so when i make P2.X = 99 I JUST CHANGED the copy so p1 does not effected
+    Order o1 = new Order
+    {
+        OrderId = 101,
+        CustomerName = "Ahmed",
+        Quantity = 2,
+        UnitPrice = 50m,
+        TotalPrice = 0m,
+        IsPaid = false,
+        DiscountPercent = 10,
+        ShippingCity = "Cairo",
+        Priority = 'H',
+        ItemCode = 1001L
+    };
+    o1.CalculateTotal();
+    Order o2 = o1;
+    o2.IsPaid = true;
+    Console.WriteLine($"o1 ispaid {o1.IsPaid}  and o2 ispaid {o2.IsPaid} ");
+    // now they are the same cuz o1 and o2 refrence to the same object in heap
+
+    object boxedOrder = o1;
+    Order o3 = (Order)boxedOrder;
+    Console.WriteLine(object.ReferenceEquals(o1, o3)); // it's the exact same instance
+
+    o2.PrintSummary();
+    Console.ReadLine();
+}
+
+internal struct point
+{
+    public int X;
+    public int Y;
 }
