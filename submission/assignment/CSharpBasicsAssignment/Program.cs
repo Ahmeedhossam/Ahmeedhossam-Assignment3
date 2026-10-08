@@ -344,10 +344,3 @@ internal struct Point
     public int X;
     public int Y;
 }
-
-public class Solution
-{
-    public int SingleNumber(int[] nums)
-    {
-    }
-}
