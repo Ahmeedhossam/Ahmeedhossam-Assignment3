@@ -184,8 +184,12 @@ using CSharpBasicsAssignment;
 Console.WriteLine("Project & Structure in comments uppper");
 Console.WriteLine("===============");
 Console.WriteLine("Part B — Variables, Types & Casting  ");
+
 RunTypesDemo();
+Console.WriteLine("Part C — Value vs. Reference Types");
 RunValueVsReferenceDemo();
+
+TestBitWiseOperators();
 
 void RunTypesDemo()
 {
@@ -241,8 +245,8 @@ void RunTypesDemo()
 }
 void RunValueVsReferenceDemo()
 {
-    point p1 = new point() { X = 1, Y = 2 };
-    point p2 = p1;
+    Point p1 = new Point() { X = 1, Y = 2 };
+    Point p2 = p1;
     p2.X = 99;
     Console.WriteLine($"p1.x {p1.X}   p2.x {p2.X}");
     // p1.x does not change to 99 cuz X is Value type so p2.X is just a copy so when i make P2.X = 99 I JUST CHANGED the copy so p1 does not effected
@@ -270,10 +274,51 @@ void RunValueVsReferenceDemo()
     Console.WriteLine(object.ReferenceEquals(o1, o3)); // it's the exact same instance
 
     o2.PrintSummary();
+    // Value types are typically stored directly in their storage location, while reference types
+    // refer to objects stored on the managed heap; however
+    // Assigning a value type copies the actual value, while assigning a reference type copies the reference.
+    // Therefore, two reference variables can refer to the same object.
+    // Storing a reference type in an object variable does not create a new object because the reference is copied, not the object itself.
+    Console.ReadLine();
+}
+void TestVariablesInLoops()
+{
+    for (int i = 0; i < 10; i++)
+    {
+        int number = i;
+    }
+    //Console.WriteLine($"access {i} or {number}");
+    //we can not access {i} or {number} outside the forloop scope
     Console.ReadLine();
 }
 
-internal struct point
+void ApplyCompositeOperators()
+{
+    int total = 100;
+    total += 200;
+    Console.WriteLine(total);
+    total -= 100;
+    Console.WriteLine(total);
+    total *= 3;
+    Console.WriteLine(total);
+    total %= 3;
+    Console.WriteLine(total);
+    total = 20;
+    //total = total + 5 ; total += 5; they are equivelent
+    Console.WriteLine(total);
+    Console.ReadLine();
+}
+void TestBitWiseOperators()
+{
+    int a = 12;
+    int b = 10;
+    Console.WriteLine($"a&b = {a & b} ");
+    Console.WriteLine($"a|b = {a | b} ");
+    Console.WriteLine($"a^b = {a ^ b} ");
+    Console.ReadLine();
+}
+
+internal struct Point
 {
     public int X;
     public int Y;
