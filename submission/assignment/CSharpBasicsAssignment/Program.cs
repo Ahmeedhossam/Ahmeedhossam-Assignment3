@@ -183,11 +183,18 @@ using CSharpBasicsAssignment;
 
 Console.WriteLine("Project & Structure in comments uppper");
 Console.WriteLine("===============");
-Console.WriteLine("Part B — Variables, Types & Casting  ");
+Console.WriteLine("==Part B — Variables, Types & Casting================  ");
 
 RunTypesDemo();
-Console.WriteLine("Part C — Value vs. Reference Types");
+
+Console.WriteLine("==Part C — Value vs. Reference Types===============");
+
 RunValueVsReferenceDemo();
+
+Console.WriteLine("==Part D — Scope & Operators===============");
+TestVariablesInLoops();
+
+ApplyCompositeOperators();
 
 TestBitWiseOperators();
 
@@ -263,6 +270,9 @@ void RunValueVsReferenceDemo()
         Priority = 'H',
         ItemCode = 1001L
     };
+    //Console.WriteLine(o1.TestFieldScope);
+    // we can not access testfieldscope cuz of field scope and we have no access
+    // the test of local variables in methods is in order class you can check it there (method scope)
     o1.CalculateTotal();
     Order o2 = o1;
     o2.IsPaid = true;
@@ -295,7 +305,9 @@ void TestVariablesInLoops()
 void ApplyCompositeOperators()
 {
     int total = 100;
-    total += 200;
+    total += 500;
+    Console.WriteLine(total);
+    total /= 2;
     Console.WriteLine(total);
     total -= 100;
     Console.WriteLine(total);
@@ -315,6 +327,15 @@ void TestBitWiseOperators()
     Console.WriteLine($"a&b = {a & b} ");
     Console.WriteLine($"a|b = {a | b} ");
     Console.WriteLine($"a^b = {a ^ b} ");
+    // a & b: 1100 & 1010 = 1000 = 8
+    // a | b: 1100 | 1010 = 1110 = 14
+    // a ^ b: 1100 ^ 1010 = 0110 = 6
+    /*The difference between bitwise and logical is that bitwise checks both left hand side and right hand side.
+     * Even if left hand side is false, I also check right hand side. This is in bitwise
+     * , but in logical, I only check left hand side, and if left hand side is false,
+     * I do not check right hand side. In bitwise, I may face this problem because in left hand side, when it is false,
+     * maybe the right hand side is calling a method or something, and this may cause exceptions. This is what happens in if condition.
+     */
     Console.ReadLine();
 }
 
